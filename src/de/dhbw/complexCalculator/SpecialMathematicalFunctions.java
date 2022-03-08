@@ -3,6 +3,7 @@ package de.dhbw.complexCalculator;
 public class SpecialMathematicalFunctions {
 
     // Inspiriert durch: https://rosettacode.org/wiki/Gamma_function#Java
+    // Static erlaubt?
 
     public double gammaFunction(double x){
 
