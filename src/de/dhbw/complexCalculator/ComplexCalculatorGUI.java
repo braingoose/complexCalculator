@@ -8,14 +8,14 @@ import java.awt.event.ActionListener;
 
 public class ComplexCalculatorGUI extends JFrame implements ActionListener {
 
-    private ComplexNumber firstComplexOperand = new ComplexNumber(Double.NaN, Double.NaN);
-    private ComplexNumber secondComplexOperand = new ComplexNumber(Double.NaN, Double.NaN);
-    private ComplexNumber complexResult = new ComplexNumber(Double.NaN, Double.NaN);
+    private ComplexNumber firstComplexOperand = new ComplexNumber(0, Double.NaN);
+    private ComplexNumber secondComplexOperand = new ComplexNumber(0, Double.NaN);
+    private ComplexNumber complexResult = new ComplexNumber(0, Double.NaN);
 
     // Operator
     private boolean onlyOneOperator = false;
     //Erlaubt?
-    private Operations operator = Operations.PLUS;
+    private Operations operator = Operations.RANDOM;
 
     // Java Swing Komponenten
     // Panel in Felder aufteilen

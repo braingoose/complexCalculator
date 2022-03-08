@@ -39,7 +39,9 @@ public class ComplexNumber implements MathematicalObject<ComplexNumber> {
             if (complexNumberString.equals("i")) {
                 tmpRealPart = 0.0;
                 tmpImaginaryPart = 1.0;
-            } else if (complexNumberString.equals("")) {
+            //} else if (complexNumberString.equals("")) {
+               // throw new IllegalArgumentException("Error during conversation");
+            } else if (complexNumberString.equals("NaN")) {
                 throw new IllegalArgumentException("Error during conversation");
             } else {
                 String[] complexNumberParts = complexNumberString.split("[+-]");
@@ -181,7 +183,8 @@ public class ComplexNumber implements MathematicalObject<ComplexNumber> {
         }
     }
 
-    public ComplexNumber random() {
+    // static machen erlaubt?
+    public static ComplexNumber random() {
         Random random = new Random();
         return new ComplexNumber(random.nextDouble(), random.nextDouble());
     }
@@ -191,7 +194,7 @@ public class ComplexNumber implements MathematicalObject<ComplexNumber> {
         SpecialMathematicalFunctions gammaFunction = new SpecialMathematicalFunctions();
 
         if (imaginaryPart == 0.0) {
-            result = new ComplexNumber(realPart * gammaFunction.gammaFunction(realPart), 0);
+            result = new ComplexNumber(gammaFunction.gammaFunction(realPart), 0);
             if (!Double.isNaN(result.realPart)) {
                 return result;
             } else {

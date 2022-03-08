@@ -76,10 +76,10 @@ public enum Operations implements Calculations<ComplexNumber> {
                 resultString = "(" + firstOperand + ")* = " + firstOperand.conjugate();
                 break;
             case SQRT:
-                resultString = "√(" + firstOperand + ") = " + firstOperand.sqrt();
+                resultString = "√(" + firstOperand + ") = ±(" + firstOperand.sqrt() + ")";
                 break;
             case RANDOM:
-                resultString = "Random = " + firstOperand.random();
+                resultString = "Random = " + ComplexNumber.random();
                 break;
             case PLUS:
                 resultString = firstOperand + " + " + secondOperator + " = " + firstOperand.add(secondOperator);
@@ -185,7 +185,6 @@ public enum Operations implements Calculations<ComplexNumber> {
             default:
                 throw new EmptyArgumentExcecption("Don't press \"=\" when Screen is empty");
         }
-        System.out.println("ENUM: " + complexResult);
         return complexResult;
     }
 }
