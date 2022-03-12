@@ -19,22 +19,22 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
 
     // Java Swing Komponenten
     // Panel in Felder aufteilen
-    private JPanel calculatorPanel = new JPanel(new BorderLayout());
+    private final JPanel calculatorPanel = new JPanel(new BorderLayout());
 
     // Panel für die Buttons
-    private JPanel buttonPanel = new JPanel(new GridLayout(Constants.BUTTON_ROWS,
+    private final JPanel buttonPanel = new JPanel(new GridLayout(Constants.BUTTON_ROWS,
             Constants.BUTTON_COLUMNS, Constants.BUTTON_GAP, Constants.BUTTON_GAP));
     //Ausgabescreen
-    private JTextField resultTextField = new JTextField(Constants.SCREEN_COLUMNS);
+    private final JTextField resultTextField = new JTextField(Constants.SCREEN_COLUMNS);
 
     // Buttons
-    private JButton[] calculatorButtons = new JButton[Constants.BUTTON_AMOUNT];
+    private final JButton[] calculatorButtons = new JButton[Constants.BUTTON_AMOUNT];
 
     // Bildschirm des Rechners
-    private ScreenPanel screenPanel = new ScreenPanel(new BorderLayout());
+    private final ScreenPanel screenPanel = new ScreenPanel(new BorderLayout());
 
     // Icon
-    private ImageIcon imageIcon = new ImageIcon(Constants.LOGO_PATH);
+    private final ImageIcon imageIcon = new ImageIcon(Constants.LOGO_PATH);
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -122,7 +122,6 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
                     throw new IllegalArgumentException("Something went wrong.");
             }
         } catch (Exception ex) {
-            System.out.println(ex);
             screenPanel.setScreenText("");
             resultTextField.setText("");
             firstComplexOperand = new ComplexNumber(Double.NaN, Double.NaN);

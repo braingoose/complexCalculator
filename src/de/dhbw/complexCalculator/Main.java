@@ -1,5 +1,7 @@
 package de.dhbw.complexCalculator;
 
+import javax.swing.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -8,7 +10,7 @@ public class Main {
             ComplexCalculatorGUI complexCalculatorGUI = new ComplexCalculatorGUI();
             complexCalculatorGUI.initializeComplexCalculator();
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

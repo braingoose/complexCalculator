@@ -2,7 +2,7 @@ package de.dhbw.complexCalculator;
 
 import java.util.Random;
 
-public class ComplexNumber implements MathematicalObject<ComplexNumber> {
+final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
 
     private double realPart;
     private double imaginaryPart;
