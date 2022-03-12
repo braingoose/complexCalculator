@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class ScreenPanel extends JPanel {
 
-    private JTextArea screenTextArea = new JTextArea(Constants.SCREEN_ROWS, Constants.SCREEN_COLUMNS);
-    private JLabel radiansLabel = new JLabel();
+    private final JTextArea screenTextArea = new JTextArea(Constants.SCREEN_ROWS, Constants.SCREEN_COLUMNS);
+    private final JLabel radiansLabel = new JLabel();
 
     public ScreenPanel(LayoutManager layout) {
         super(layout);

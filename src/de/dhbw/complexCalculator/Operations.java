@@ -32,8 +32,8 @@ public enum Operations implements Calculations<ComplexNumber> {
 
     // Static hier erlaubt?
     public static Operations stringToOperation(String operator) {
-        for (Operations operation : Operations.values()) {
-            if (operation.operation.equals(operator)) {
+        for(Operations operation : Operations.values()) {
+            if(operation.operation.equals(operator)) {
                 return operation;
             }
         }
@@ -42,150 +42,59 @@ public enum Operations implements Calculations<ComplexNumber> {
 
     @Override
     public String display(Operations operator, ComplexNumber firstOperand, ComplexNumber secondOperator) {
-        String resultString = "";
-
-        switch (operator) {
-            case ANGLE:
-                resultString = "∠" + "(" + firstOperand + ") = " + firstOperand.getAngle();
-                break;
-            case ABS:
-                resultString = "|" + firstOperand + "| = " + firstOperand.getAbs();
-                break;
-            case SIN:
-                resultString = "sin(" + firstOperand + ") = " + firstOperand.sin();
-                break;
-            case COS:
-                resultString = resultString = "cos(" + firstOperand + ") = " + firstOperand.cos();
-                break;
-            case TAN:
-                resultString = resultString = "tan(" + firstOperand + ") = " + firstOperand.tan();
-                break;
-            case LOG:
-                resultString  = "tan(" + firstOperand + ") = " + firstOperand.tan();
-                break;
-            case CEIL:
-                resultString = "⌈" + firstOperand + "⌉ = " + firstOperand.ceil();
-                break;
-            case FLOOR:
-                resultString = "⌊" + firstOperand + "⌋ = " + firstOperand.floor();
-                break;
-            case PERCENTAGE:
-                resultString = "%(" + firstOperand + ") = " + firstOperand.percentage();
-                break;
-            case CONJUGATION:
-                resultString = "(" + firstOperand + ")* = " + firstOperand.conjugate();
-                break;
-            case SQRT:
-                resultString = "√(" + firstOperand + ") = ±(" + firstOperand.sqrt() + ")";
-                break;
-            case RANDOM:
-                resultString = "Random = " + ComplexNumber.random();
-                break;
-            case PLUS:
-                resultString = firstOperand + " + " + secondOperator + " = " + firstOperand.add(secondOperator);
-                break;
-            case MINUS:
-                resultString = firstOperand + " - " + secondOperator + " = " + firstOperand.sub(secondOperator);
-                break;
-            case MUL:
-                resultString = firstOperand + " * " + secondOperator + " = " + firstOperand.mul(secondOperator);
-                break;
-            case DIV:
-                resultString = firstOperand + " / " + secondOperator + " = " + firstOperand.div(secondOperator);
-                break;
-            case POWER:
-                resultString = firstOperand + " ^ " + secondOperator + " = " + firstOperand.power(secondOperator);
-                break;
-            case INVERSE:
-                resultString = "1/(" + firstOperand  + ") = " + firstOperand.inverse();
-                break;
-            case COSH:
-                resultString = "cosh(" + firstOperand + ") = " + firstOperand.cosh();
-                break;
-            case SINH:
-                resultString = resultString = "sinh(" + firstOperand + ") = " + firstOperand.sinh();
-                break;
-            case FACTORIAL:
-                resultString =  "(" + firstOperand + ")! = " + firstOperand.factorial();
-                break;
-            default:
-                throw new EmptyArgumentExcecption("Don't press \"=\" when Screen is empty");
-        }
-        return resultString;
+        return switch (operator) {
+            case ANGLE -> "∠" + "(" + firstOperand + ") = " + firstOperand.getAngle();
+            case ABS -> "|" + firstOperand + "| = " + firstOperand.getAbs();
+            case SIN -> "sin(" + firstOperand + ") = " + firstOperand.sin();
+            case COS ->  "cos(" + firstOperand + ") = " + firstOperand.cos();
+            case TAN -> "tan(" + firstOperand + ") = " + firstOperand.tan();
+            case LOG -> "ln(" + firstOperand + ") = " + firstOperand.logarithm();
+            case CEIL -> "⌈" + firstOperand + "⌉ = " + firstOperand.ceil();
+            case FLOOR -> "⌊" + firstOperand + "⌋ = " + firstOperand.floor();
+            case PERCENTAGE -> "%(" + firstOperand + ") = " + firstOperand.percentage();
+            case CONJUGATION -> "(" + firstOperand + ")* = " + firstOperand.conjugate();
+            case SQRT -> "√(" + firstOperand + ") = ±(" + firstOperand.sqrt() + ")";
+            case RANDOM -> "Random = " + ComplexNumber.random();
+            case PLUS -> firstOperand + " + " + secondOperator + " = " + firstOperand.add(secondOperator);
+            case MINUS -> firstOperand + " - " + secondOperator + " = " + firstOperand.sub(secondOperator);
+            case MUL -> firstOperand + " * " + secondOperator + " = " + firstOperand.mul(secondOperator);
+            case DIV -> firstOperand + " / " + secondOperator + " = " + firstOperand.div(secondOperator);
+            case POWER -> firstOperand + " ^ " + secondOperator + " = " + firstOperand.power(secondOperator);
+            case INVERSE -> "1/(" + firstOperand + ") = " + firstOperand.inverse();
+            case COSH -> "cosh(" + firstOperand + ") = " + firstOperand.cosh();
+            case SINH -> "sinh(" + firstOperand + ") = " + firstOperand.sinh();
+            case FACTORIAL -> "(" + firstOperand + ")! = " + firstOperand.factorial();
+            default -> throw new EmptyArgumentExcecption("Don't press \"=\" when Screen is empty");
+        };
     }
 
     @Override
     public ComplexNumber calculate(Operations operator, ComplexNumber firstOperand, ComplexNumber secondOperator) {
-        ComplexNumber complexResult = new ComplexNumber(0, 0);
 
-        switch (operator) {
-            case ANGLE:
-                complexResult = new ComplexNumber(firstOperand.getAngle(), 0);
-                break;
-            case ABS:
-                complexResult = new ComplexNumber(firstOperand.getAbs(), 0);
-                break;
-            case SIN:
-                complexResult = firstOperand.sin();
-                break;
-            case COS:
-                complexResult = firstOperand.cos();
-                break;
-            case TAN:
-                complexResult = firstOperand.tan();
-                break;
-            case LOG:
-                complexResult = firstOperand.logarithm();
-                break;
-            case CEIL:
-                complexResult = firstOperand.ceil();
-                break;
-            case FLOOR:
-                complexResult = firstOperand.floor();
-                break;
-            case PERCENTAGE:
-                complexResult = firstOperand.percentage();
-                break;
-            case CONJUGATION:
-                complexResult = firstOperand.conjugate();
-                break;
-            case SQRT:
-                complexResult = firstOperand.sqrt();
-                break;
-            case RANDOM:
-                complexResult = firstOperand.random();
-                break;
-            case PLUS:
-                complexResult = firstOperand.add(secondOperator);
-                break;
-            case MINUS:
-                complexResult = firstOperand.sub(secondOperator);
-                break;
-            case MUL:
-                complexResult = firstOperand.mul(secondOperator);
-                break;
-            case DIV:
-                complexResult = firstOperand.div(secondOperator);
-                break;
-            case POWER:
-                complexResult = firstOperand.power(secondOperator);
-                break;
-            case INVERSE:
-                complexResult = firstOperand.inverse();
-                break;
-            case COSH:
-                complexResult = firstOperand.cosh();
-                break;
-            case SINH:
-                complexResult = firstOperand.sinh();
-                break;
-            case FACTORIAL:
-                complexResult = firstOperand.factorial();
-                break;
-            default:
-                throw new EmptyArgumentExcecption("Don't press \"=\" when Screen is empty");
-        }
-        return complexResult;
+        return switch (operator) {
+            case ANGLE -> new ComplexNumber(firstOperand.getAngle(), 0);
+            case ABS -> new ComplexNumber(firstOperand.getAbs(), 0);
+            case SIN -> firstOperand.sin();
+            case COS -> firstOperand.cos();
+            case TAN -> firstOperand.tan();
+            case LOG -> firstOperand.logarithm();
+            case CEIL -> firstOperand.ceil();
+            case FLOOR -> firstOperand.floor();
+            case PERCENTAGE -> firstOperand.percentage();
+            case CONJUGATION -> firstOperand.conjugate();
+            case SQRT -> firstOperand.sqrt();
+            case RANDOM -> ComplexNumber.random();
+            case PLUS -> firstOperand.add(secondOperator);
+            case MINUS -> firstOperand.sub(secondOperator);
+            case MUL -> firstOperand.mul(secondOperator);
+            case DIV -> firstOperand.div(secondOperator);
+            case POWER -> firstOperand.power(secondOperator);
+            case INVERSE -> firstOperand.inverse();
+            case COSH -> firstOperand.cosh();
+            case SINH -> firstOperand.sinh();
+            case FACTORIAL -> firstOperand.factorial();
+            default -> throw new EmptyArgumentExcecption("Don't press \"=\" when Screen is empty");
+        };
     }
 }
 
