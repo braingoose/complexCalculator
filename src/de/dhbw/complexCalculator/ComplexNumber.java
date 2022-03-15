@@ -2,6 +2,10 @@ package de.dhbw.complexCalculator;
 
 import java.util.Random;
 
+/**
+ * Stellt eine komplexe Zahl dar.
+ * Ermöglicht einige Berechnungen mit komplexen Zahlen.
+ */
 final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
 
     private double realPart;
@@ -183,7 +187,6 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
         }
     }
 
-    // static machen erlaubt?
     public static ComplexNumber random() {
         Random random = new Random();
         return new ComplexNumber(random.nextDouble(), random.nextDouble());
@@ -195,7 +198,10 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
 
         if (imaginaryPart == 0.0) {
             result = new ComplexNumber(gammaFunction.gammaFunction(realPart), 0);
-            if (!Double.isNaN(result.realPart)) {
+            if (realPart == 0) {
+                result.setRealPart(1);
+                return result;
+            } else if (!Double.isNaN(result.realPart)) {
                 return result;
             } else {
                 throw new IllegalArgumentException("Result is out of bounds");

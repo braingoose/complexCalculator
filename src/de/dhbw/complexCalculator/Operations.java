@@ -41,8 +41,8 @@ public enum Operations implements Calculations<ComplexNumber> {
     }
 
     @Override
-    public String display(Operations operator, ComplexNumber firstOperand, ComplexNumber secondOperator) {
-        return switch (operator) {
+    public String display(ComplexNumber firstOperand, ComplexNumber secondOperator) {
+        return switch (this) {
             case ANGLE -> "∠" + "(" + firstOperand + ") = " + firstOperand.getAngle();
             case ABS -> "|" + firstOperand + "| = " + firstOperand.getAbs();
             case SIN -> "sin(" + firstOperand + ") = " + firstOperand.sin();
@@ -64,14 +64,14 @@ public enum Operations implements Calculations<ComplexNumber> {
             case COSH -> "cosh(" + firstOperand + ") = " + firstOperand.cosh();
             case SINH -> "sinh(" + firstOperand + ") = " + firstOperand.sinh();
             case FACTORIAL -> "(" + firstOperand + ")! = " + firstOperand.factorial();
-            default -> throw new EmptyArgumentExcecption("Don't press \"=\" when Screen is empty");
+            default -> throw new UnknownOperatorException("Unknown Operator");
         };
     }
 
     @Override
-    public ComplexNumber calculate(Operations operator, ComplexNumber firstOperand, ComplexNumber secondOperator) {
+    public ComplexNumber calculate(ComplexNumber firstOperand, ComplexNumber secondOperator) {
 
-        return switch (operator) {
+        return switch (this) {
             case ANGLE -> new ComplexNumber(firstOperand.getAngle(), 0);
             case ABS -> new ComplexNumber(firstOperand.getAbs(), 0);
             case SIN -> firstOperand.sin();
@@ -93,7 +93,7 @@ public enum Operations implements Calculations<ComplexNumber> {
             case COSH -> firstOperand.cosh();
             case SINH -> firstOperand.sinh();
             case FACTORIAL -> firstOperand.factorial();
-            default -> throw new EmptyArgumentExcecption("Don't press \"=\" when Screen is empty");
+            default -> throw new UnknownOperatorException("Unknown Operator");
         };
     }
 }
