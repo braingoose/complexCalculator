@@ -6,6 +6,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Taschenrechner für komplexe Zahlen.
+ * Der Nutzer hat die Möglichkeit über Buttons Operanden sowie
+ * Operationen einzugeben.
+ */
 public class ComplexCalculatorGUI extends JFrame implements ActionListener {
 
     private ComplexNumber firstComplexOperand = new ComplexNumber(0, Double.NaN);
@@ -36,6 +41,7 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
     // Icon
     private final ImageIcon imageIcon = new ImageIcon(Constants.LOGO_PATH);
 
+    // Gedrückten Button auswerten
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
@@ -114,8 +120,7 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
                     if (!onlyOneOperator) {
                         secondComplexOperand.convert(screenPanel.getScreenText());
                     }
-                    complexResult = operator.calculate(operator,
-                            firstComplexOperand, secondComplexOperand);
+                    complexResult = operator.calculate(firstComplexOperand, secondComplexOperand);
                     printComplexResult();
                     break;
                 default:
@@ -132,7 +137,6 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
     }
 
     public void initializeComplexCalculator() {
-
         //Titel + Icon
         setTitle(Constants.TITLE);
         setIconImage(imageIcon.getImage()); //Anzeige bearbeiten
@@ -179,10 +183,10 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
 
     private void printComplexResult() {
         screenPanel.setScreenText(String.valueOf(complexResult));
-        resultTextField.setText(operator.display(operator,
-                firstComplexOperand, secondComplexOperand));
+        resultTextField.setText(operator.display(firstComplexOperand, secondComplexOperand));
     }
 
+    // Vorzeichen für den Imaginärteil setzen
     private void setSignOfImaginaryPart() {
         if (!screenPanel.getScreenText().isEmpty()) {
             if (screenPanel.getScreenText().charAt(0) == '-') {
