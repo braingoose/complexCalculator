@@ -26,7 +26,8 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
             return realPart + "";
         } else if (imaginaryPart < 0) {
             return realPart + " - " + Math.abs(imaginaryPart) + "i";
-        } else if (Double.isNaN(realPart) && Double.isNaN(imaginaryPart)) {
+        } else if (Double.isNaN(realPart) || Double.isNaN(imaginaryPart)
+                || Double.isInfinite(realPart) || Double.isInfinite(imaginaryPart)) {
             throw new IllegalComplexNumberException("No complex number");
         } else {
             return realPart + " + " + imaginaryPart + "i";
@@ -35,7 +36,6 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
 
     //Inspiriert durch: https://stackoverflow.com/questions/20248695/regex-for-dividing-complex-number-string-in-java
     public void convert(String complexNumberString) {
-
         try {
             complexNumberString = complexNumberString.replaceAll("\\s+", ""); // Leerzeichen entfernen
             double tmpRealPart = 0, tmpImaginaryPart = 0;
@@ -43,10 +43,8 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
             if (complexNumberString.equals("i")) {
                 tmpRealPart = 0.0;
                 tmpImaginaryPart = 1.0;
-            //} else if (complexNumberString.equals("")) {
-               // throw new IllegalArgumentException("Error during conversation");
             } else if (complexNumberString.equals("NaN")) {
-                throw new IllegalArgumentException("Error during conversation");
+                throw new IllegalComplexNumberException("Something went wrong during the conversation");
             } else {
                 String[] complexNumberParts = complexNumberString.split("[+-]");
                 int pos = -1;
@@ -81,7 +79,7 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
             realPart = tmpRealPart;
             imaginaryPart = tmpImaginaryPart;
         } catch(Exception e) {
-            throw new IllegalComplexNumberException("Something went wrong during the conversation");
+            throw new IllegalComplexNumberException(e.getMessage());
         }
     }
 
@@ -168,6 +166,9 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
     }
 
     public ComplexNumber power(ComplexNumber operand1) {
+        if (realPart == 0 && imaginaryPart == 0) {
+            return new ComplexNumber(0,0);
+        }
 
         ComplexNumber a = new ComplexNumber(Math.pow(Constants.EULERS_NUMBER,
                 operand1.realPart * Math.log(getAbs()) - operand1.imaginaryPart * getAngle()),
