@@ -42,7 +42,7 @@ public enum Operations implements Calculations<ComplexNumber> {
 
     @Override
     public String display(Operations operator, ComplexNumber firstOperand, ComplexNumber secondOperator) {
-        return switch (operator) {
+        return switch (operator) { // hier wieder der Operator sich nur selbst übergeben. Stattdessen kann der Parameter entfernt werden und this verwendet werden
             case ANGLE -> "∠" + "(" + firstOperand + ") = " + firstOperand.getAngle();
             case ABS -> "|" + firstOperand + "| = " + firstOperand.getAbs();
             case SIN -> "sin(" + firstOperand + ") = " + firstOperand.sin();
@@ -64,6 +64,9 @@ public enum Operations implements Calculations<ComplexNumber> {
             case COSH -> "cosh(" + firstOperand + ") = " + firstOperand.cosh();
             case SINH -> "sinh(" + firstOperand + ") = " + firstOperand.sinh();
             case FACTORIAL -> "(" + firstOperand + ")! = " + firstOperand.factorial();
+            // Die Exception ist irreführend. Angenommen, sie vergessen einen Operator in ihrem Switch,
+            // wird dem Benutzer eine "Don't ..." Meldung angezeigt, obwohl es gar nicht am User lag...
+            // Richtiger wäre wohl eine UnknownOperatorException o.ä.
             default -> throw new EmptyArgumentExcecption("Don't press \"=\" when Screen is empty");
         };
     }

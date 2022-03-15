@@ -132,7 +132,7 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
     }
 
     public void initializeComplexCalculator() {
-
+// unnötige Leerzeilen am Methodenanfang / - Ende entfernen
         //Titel + Icon
         setTitle(Constants.TITLE);
         setIconImage(imageIcon.getImage()); //Anzeige bearbeiten
@@ -179,7 +179,7 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
 
     private void printComplexResult() {
         screenPanel.setScreenText(String.valueOf(complexResult));
-        resultTextField.setText(operator.display(operator,
+        resultTextField.setText(operator.display(operator, // hier wird der operator sich selbst als parameter übergeben.
                 firstComplexOperand, secondComplexOperand));
     }
 
