@@ -153,7 +153,10 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
     public double getAngle() {
         if(imaginaryPart == 0 && realPart < 0 ) {
             return Constants.PI;
-        } else {
+        } else if (realPart == 0 && imaginaryPart < 0) {
+            return 3 * Constants.PI / 2;
+        }
+        else {
             return Math.atan(imaginaryPart / realPart);
         }
     }
