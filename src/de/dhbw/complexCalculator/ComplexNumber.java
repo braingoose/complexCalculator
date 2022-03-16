@@ -98,12 +98,11 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
     @Override
     public ComplexNumber mul(ComplexNumber operand) {
         return new ComplexNumber(realPart * operand.realPart - imaginaryPart * operand.imaginaryPart,
-                imaginaryPart * realPart + realPart * operand.imaginaryPart);
+                realPart * operand.imaginaryPart + imaginaryPart * operand.realPart);
     }
 
     @Override
     public ComplexNumber div(ComplexNumber operand) {
-
         double num = (realPart * operand.realPart + imaginaryPart * operand.imaginaryPart) /
                 (operand.realPart * operand.realPart + operand.imaginaryPart * operand.imaginaryPart);
         double den = (imaginaryPart * operand.realPart - realPart * operand.imaginaryPart) /
@@ -203,7 +202,7 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
                 result.setRealPart(1);
                 return result;
             } else if (!Double.isNaN(result.realPart)) {
-                return result;
+                return new ComplexNumber(realPart * result.realPart, 0);
             } else {
                 throw new IllegalArgumentException("Result is out of bounds");
             }

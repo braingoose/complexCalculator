@@ -57,8 +57,8 @@ public enum Operations implements Calculations<ComplexNumber> {
             case RANDOM -> "Random = " + ComplexNumber.random();
             case PLUS -> firstOperand + " + " + secondOperator + " = " + firstOperand.add(secondOperator);
             case MINUS -> firstOperand + " - " + secondOperator + " = " + firstOperand.sub(secondOperator);
-            case MUL -> firstOperand + " * " + secondOperator + " = " + firstOperand.mul(secondOperator);
-            case DIV -> firstOperand + " / " + secondOperator + " = " + firstOperand.div(secondOperator);
+            case MUL -> "(" + firstOperand + ") * (" + secondOperator + ")" + " = " + firstOperand.mul(secondOperator);
+            case DIV -> "(" + firstOperand + ") / (" + secondOperator + ")" +" = " + firstOperand.div(secondOperator);
             case POWER -> firstOperand + " ^ " + secondOperator + " = " + firstOperand.power(secondOperator);
             case INVERSE -> "1/(" + firstOperand + ") = " + firstOperand.inverse();
             case COSH -> "cosh(" + firstOperand + ") = " + firstOperand.cosh();
