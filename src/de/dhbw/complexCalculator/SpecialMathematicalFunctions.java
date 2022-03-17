@@ -3,10 +3,7 @@ package de.dhbw.complexCalculator;
 public class SpecialMathematicalFunctions {
 
     // Inspiriert durch: https://rosettacode.org/wiki/Gamma_function#Java
-    // Static erlaubt?
-
-    public double gammaFunction(double x){
-
+    public double gammaFunction(double x) {
         if (x < 0.5) {
             return Constants.PI / (Math.sin(Constants.PI * x) * gammaFunction(1 - x));
         }

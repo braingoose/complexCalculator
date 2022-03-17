@@ -30,7 +30,6 @@ public enum Operations implements Calculations<ComplexNumber> {
         this.operation = operation;
     }
 
-    // Static hier erlaubt?
     public static Operations stringToOperation(String operator) {
         for(Operations operation : Operations.values()) {
             if(operation.operation.equals(operator)) {
@@ -70,7 +69,6 @@ public enum Operations implements Calculations<ComplexNumber> {
 
     @Override
     public ComplexNumber calculate(ComplexNumber firstOperand, ComplexNumber secondOperator) {
-
         return switch (this) {
             case ANGLE -> new ComplexNumber(firstOperand.getAngle(), 0);
             case ABS -> new ComplexNumber(firstOperand.getAbs(), 0);
