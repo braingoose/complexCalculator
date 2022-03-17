@@ -17,7 +17,6 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
     }
 
     public String toString() {
-
         if (realPart == 0.0 && imaginaryPart == 0.0) {
             return "0.0";
         } else if (realPart == 0.0) {
@@ -181,7 +180,6 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
     }
 
     public ComplexNumber sqrt() {
-
         if (realPart < 0 && imaginaryPart == 0) {
             return new ComplexNumber(0, Math.sqrt((getAbs())));
         } else {
