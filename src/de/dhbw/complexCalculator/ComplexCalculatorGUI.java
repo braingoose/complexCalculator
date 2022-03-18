@@ -183,7 +183,7 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
 
     private void printComplexResult() {
         screenPanel.setScreenText(String.valueOf(complexResult));
-        resultTextField.setText(operator.display(firstComplexOperand, secondComplexOperand));
+        resultTextField.setText(operator.getTerm(firstComplexOperand, secondComplexOperand));
     }
 
     // Vorzeichen für den Imaginärteil setzen

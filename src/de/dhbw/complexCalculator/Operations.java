@@ -40,7 +40,7 @@ public enum Operations implements Calculations<ComplexNumber> {
     }
 
     @Override
-    public String display(ComplexNumber firstOperand, ComplexNumber secondOperator) {
+    public String getTerm(ComplexNumber firstOperand, ComplexNumber secondOperator) {
         return switch (this) {
             case ANGLE -> "∠" + "(" + firstOperand + ") = " + firstOperand.getAngle();
             case ABS -> "|" + firstOperand + "| = " + firstOperand.getAbs();
