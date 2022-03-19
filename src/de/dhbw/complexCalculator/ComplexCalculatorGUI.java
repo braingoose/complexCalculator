@@ -20,7 +20,7 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
     // Operator
     private boolean onlyOneOperator = false;
     //Erlaubt?
-    private Operations operator = Operations.RANDOM;
+    private ComplexNumbersOperations operator = ComplexNumbersOperations.RANDOM;
 
     // Java Swing Komponenten
     // Panel in Felder aufteilen
@@ -175,7 +175,7 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
     }
 
     private void evaluateOperator(boolean oneOperator, String selectedOperator) {
-        operator = Operations.stringToOperation(selectedOperator);
+        operator = ComplexNumbersOperations.stringToOperation(selectedOperator);
         onlyOneOperator = oneOperator;
         firstComplexOperand.convert(screenPanel.getScreenText());
         screenPanel.setScreenText("");
