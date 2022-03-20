@@ -151,6 +151,7 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
 
     public double getAngle() {
         double phaseAngle;
+        //Fallunterscheidung der Winkel
         if(imaginaryPart == 0 && realPart < 0 ) {
             phaseAngle = Constants.PI;
         } else if (realPart == 0 && imaginaryPart < 0) {
