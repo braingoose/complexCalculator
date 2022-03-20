@@ -147,6 +147,7 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
 
         // Ausgabe
         resultTextField.setBackground(Color.WHITE);
+        resultTextField.setEditable(false);
 
         //Buttons initialisieren
         for (int k = 0; k < calculatorButtons.length; k++) {
