@@ -1,6 +1,6 @@
 package de.dhbw.complexCalculator;
 
-public enum Operations implements Calculations<ComplexNumber> {
+public enum ComplexNumbersOperations implements Calculations<ComplexNumber> {
 
     PLUS("+"),
     MINUS("-"),
@@ -26,12 +26,12 @@ public enum Operations implements Calculations<ComplexNumber> {
 
     private final String operation;
 
-    Operations(String operation) {
+    ComplexNumbersOperations(String operation) {
         this.operation = operation;
     }
 
-    public static Operations stringToOperation(String operator) {
-        for(Operations operation : Operations.values()) {
+    public static ComplexNumbersOperations stringToOperation(String operator) {
+        for(ComplexNumbersOperations operation : ComplexNumbersOperations.values()) {
             if(operation.operation.equals(operator)) {
                 return operation;
             }
@@ -40,7 +40,7 @@ public enum Operations implements Calculations<ComplexNumber> {
     }
 
     @Override
-    public String display(ComplexNumber firstOperand, ComplexNumber secondOperator) {
+    public String getTerm(ComplexNumber firstOperand, ComplexNumber secondOperator) {
         return switch (this) {
             case ANGLE -> "∠" + "(" + firstOperand + ") = " + firstOperand.getAngle();
             case ABS -> "|" + firstOperand + "| = " + firstOperand.getAbs();

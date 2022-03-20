@@ -68,7 +68,7 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
                         if("+".equals(complexPart)) {
                             tmpImaginaryPart++;
                         } else if("-".equals(complexPart)) {
-                            tmpImaginaryPart--;
+                            tmpImaginaryPart = -1;
                         } else {
                             tmpImaginaryPart += Double.parseDouble(complexPart);
                         }
@@ -150,14 +150,23 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
     }
 
     public double getAngle() {
+        double phaseAngle;
         if(imaginaryPart == 0 && realPart < 0 ) {
-            return Constants.PI;
+            phaseAngle = Constants.PI;
         } else if (realPart == 0 && imaginaryPart < 0) {
-            return 3 * Constants.PI / 2;
+            phaseAngle =  3 * Constants.PI / 2;
+        } else if (realPart == 0 && imaginaryPart > 0) {
+            phaseAngle = Constants.PI / 2;
+        } else if (realPart == 0 && imaginaryPart == 0) {
+            phaseAngle = 0;
+        } else if(realPart > 0 && imaginaryPart > 0) {
+            phaseAngle = Math.atan(imaginaryPart / realPart) + 2 * Constants.PI;
+        } else if (realPart < 0) {
+            phaseAngle = Math.atan(imaginaryPart / realPart) + Constants.PI;
+        } else {
+            phaseAngle = Math.atan(imaginaryPart / realPart);
         }
-        else {
-            return Math.atan(imaginaryPart / realPart);
-        }
+        return phaseAngle;
     }
 
     public double getAbs() {
