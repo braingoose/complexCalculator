@@ -15,6 +15,7 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
 
     private ComplexNumber firstComplexOperand = new ComplexNumber(0, Double.NaN);
     private ComplexNumber secondComplexOperand = new ComplexNumber(0, Double.NaN);
+    private ComplexNumber temporaryComplexNumber = new ComplexNumber(0, 0);
     private ComplexNumber complexResult = new ComplexNumber(0, Double.NaN);
 
     // Operator
@@ -108,9 +109,9 @@ public class ComplexCalculatorGUI extends JFrame implements ActionListener {
                     break;
                 case "+/-":
                     if (!screenPanel.getScreenText().isEmpty()) {
-                        firstComplexOperand.convert(screenPanel.getScreenText());
-                        firstComplexOperand.setRealPart(-1 * firstComplexOperand.getRealPart());
-                        screenPanel.setScreenText(String.valueOf(firstComplexOperand));
+                        temporaryComplexNumber.convert(screenPanel.getScreenText());
+                        temporaryComplexNumber.setRealPart(-1 * temporaryComplexNumber.getRealPart());
+                        screenPanel.setScreenText(String.valueOf(temporaryComplexNumber));
                     }
                     break;
                 case "ℂ: +/-":
