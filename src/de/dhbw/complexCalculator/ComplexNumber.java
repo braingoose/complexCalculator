@@ -158,7 +158,7 @@ final public class ComplexNumber implements MathematicalObject<ComplexNumber> {
             phaseAngle =  3 * Constants.PI / 2;
         } else if (realPart == 0 && imaginaryPart > 0) {
             phaseAngle = Constants.PI / 2;
-        } else if (realPart == 0 && imaginaryPart == 0) {
+        } else if (realPart == 0) {
             phaseAngle = 0;
         } else if(realPart > 0 && imaginaryPart > 0) {
             phaseAngle = Math.atan(imaginaryPart / realPart) + 2 * Constants.PI;
